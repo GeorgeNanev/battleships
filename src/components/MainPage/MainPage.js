@@ -98,7 +98,6 @@ export default () => {
   const handleNewGame = () => {
     init();
   };
-  console.log(allShips);
   return (
     <MainPageUI.StyledGame>
       <MainPageUI.StyledHeader>
