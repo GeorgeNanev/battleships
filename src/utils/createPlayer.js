@@ -19,8 +19,6 @@ export default () => {
     getAttackboard,
     getShips,
     randomizeShips,
-    canMoveShip,
-    moveShip,
   } = gameboard;
 
   return {
@@ -33,7 +31,5 @@ export default () => {
     attack,
     hasLost,
     randomizeShips,
-    canMoveShip,
-    moveShip,
   };
 };

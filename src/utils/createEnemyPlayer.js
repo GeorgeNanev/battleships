@@ -5,6 +5,7 @@ export default () => {
   let hitsHistory = [];
   const player = createPlayer();
 
+  // simulate a simple random attack for computer player
   const randomAttack = (board) => {
     const emptyCellCooords = [];
 
@@ -18,7 +19,7 @@ export default () => {
 
     return emptyCellCooords[getRandomInt(0, emptyCellCooords.length)];
   };
-
+  //
   const searchingAttack = (board) => {
     const { row, col } = hitsHistory[hitsHistory.length - 1];
 

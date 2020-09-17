@@ -103,7 +103,7 @@ export default () => {
       <MainPageUI.StyledHeader>
         <h1>Battleships game</h1>
       </MainPageUI.StyledHeader>
-      <GameInfo totalShots={totalShots}></GameInfo>
+      {/* <GameInfo totalShots={totalShots}></GameInfo> */}
       <HeaderSection
         winner={winner}
         isStarted={isStarted}

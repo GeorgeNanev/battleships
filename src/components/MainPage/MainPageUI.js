@@ -11,4 +11,8 @@ export const StyledHeader = styled.header`
   text-align: center;
   justify-content: center;
   align-items: center;
+  font-size: 50px;
+  font-family: "Avenir", sans-serif;
+  color: #5d5c5c;
+  margin-bottom: 1rem;
 `;
