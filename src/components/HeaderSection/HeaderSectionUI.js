@@ -23,6 +23,12 @@ export const StyledButton = styled.button`
     position: relative;
     top: 1px;
   }
+  &:disabled {
+    color: white;
+    background: #cccccc;
+    text-shadow: 0px 1px 0px #cccccc;
+    box-shadow: inset 0px -3px 7px 0px #cccccc;
+  }
 `;
 
 export const StyledButtonsWrapper = styled.div`

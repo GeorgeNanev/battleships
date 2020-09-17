@@ -27,6 +27,7 @@ export default () => {
 
     setGameboard(player.getGameboard());
     setAttackboard(computerPlayer.getAttackboard());
+    setTotalShots(0);
     setShips(
       player.getShips().map((ship) => ({
         ...ship,
