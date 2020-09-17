@@ -20,6 +20,7 @@ export default () => {
   const [isStarted, setStarted] = useState(false);
   const [winner, setWinner] = useState("");
   const [whoseTurn, setWhoseTurn] = useState("Your turn");
+  const [isCheater, setIscheater] = useState(false);
   let [totalShots, setTotalShots] = useState(0);
 
   // initialize the game => create Player 1 and Player AI, randomize ships position, clear winner
@@ -105,9 +106,14 @@ export default () => {
       </MainPageUI.StyledHeader>
       <MainPageUI.StyledBoardWrapper>
         <MainPageUI.InfoWrapper>
-          <h5>
+          <h3>
             Press <b>Start game</b> to test your skills!
-          </h5>
+          </h3>
+          <MainPageUI.StyledCheaterButton
+            onClick={() => setIscheater(!isCheater)}
+          >
+            Show enemy ships!
+          </MainPageUI.StyledCheaterButton>
           <GameInfo totalShots={totalShots}></GameInfo>
           <HeaderSection
             winner={winner}
@@ -119,19 +125,24 @@ export default () => {
           />
         </MainPageUI.InfoWrapper>
         <div>
-          <p>Player board</p>
+          <MainPageUI.StyledParagraph>Player board</MainPageUI.StyledParagraph>
+          <hr></hr>
           <Board>
             <PlayerBoard board={gameboard} ships={allShips.playerShips} />
           </Board>
         </div>
         <div>
-          <p>Computer board</p>
+          <MainPageUI.StyledParagraph>
+            Computer board
+          </MainPageUI.StyledParagraph>
+          <hr></hr>
           <Board>
             <EnemyBoard
               board={attackboard}
               onCellClick={handleCellClick}
               isStarted={isStarted}
               ships={allShips.enemyShips}
+              isCheater={isCheater}
             />
           </Board>
         </div>

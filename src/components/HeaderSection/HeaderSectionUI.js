@@ -26,8 +26,9 @@ export const StyledButton = styled.button`
   &:disabled {
     color: white;
     background: #cccccc;
-    text-shadow: 0px 1px 0px #cccccc;
-    box-shadow: inset 0px -3px 7px 0px #cccccc;
+    text-shadow: none;
+    box-shadow: none;
+    border: transparent;
   }
 `;
 
@@ -37,6 +38,6 @@ export const StyledButtonsWrapper = styled.div`
 `;
 
 export const StyledMessage = styled.h3`
-  margin-top: 10px;
   text-align: center;
+  min-width: 100px;
 `;

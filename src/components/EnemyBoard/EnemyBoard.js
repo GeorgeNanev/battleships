@@ -9,7 +9,7 @@ const StyledBoard = styled.div`
   position: relative;
 `;
 
-export default ({ board, onCellClick, isStarted, ships }) => {
+export default ({ board, onCellClick, isStarted, ships, isCheater }) => {
   const renderShips = () =>
     ships.map((ship, index) => {
       const { coords } = ship;
@@ -38,7 +38,7 @@ export default ({ board, onCellClick, isStarted, ships }) => {
   return (
     <StyledBoard>
       {renderCells()}
-      {renderShips()}
+      {isCheater && renderShips()}
     </StyledBoard>
   );
 };

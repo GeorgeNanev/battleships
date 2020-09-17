@@ -16,16 +16,6 @@ export default ({
           Start the game against the computer
         </HeaderSectionUI.StyledMessage>
       )}
-      {isStarted && (
-        <HeaderSectionUI.StyledButton onClick={onNewGame}>
-          New Game
-        </HeaderSectionUI.StyledButton>
-      )}
-      {!winner && !isStarted && (
-        <HeaderSectionUI.StyledButton onClick={onPlay}>
-          Start game
-        </HeaderSectionUI.StyledButton>
-      )}
       {isStarted && !winner && (
         <HeaderSectionUI.StyledMessage>
           {whoseTurn}
@@ -33,6 +23,16 @@ export default ({
       )}
       {isStarted && winner && (
         <HeaderSectionUI.StyledMessage>{`${winner}. Try again ?`}</HeaderSectionUI.StyledMessage>
+      )}
+      {isStarted && (
+        <HeaderSectionUI.StyledButton onClick={onNewGame}>
+          Restart
+        </HeaderSectionUI.StyledButton>
+      )}
+      {!winner && !isStarted && (
+        <HeaderSectionUI.StyledButton onClick={onPlay}>
+          Start game
+        </HeaderSectionUI.StyledButton>
       )}
       <HeaderSectionUI.StyledButton onClick={onRandom} disabled={isStarted}>
         Shuffle position
