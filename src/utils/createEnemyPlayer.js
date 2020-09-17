@@ -19,7 +19,7 @@ export default () => {
 
     return emptyCellCooords[getRandomInt(0, emptyCellCooords.length)];
   };
-  //
+  // search for a open position to attack on the board
   const searchingAttack = (board) => {
     const { row, col } = hitsHistory[hitsHistory.length - 1];
 

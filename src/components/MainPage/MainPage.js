@@ -10,9 +10,13 @@ let player = createPlayer();
 let computerPlayer = createEnemyPlayer();
 
 export default () => {
+  const defaultShips = {
+    playerShips: [],
+    enemyShips: [],
+  };
   const [gameboard, setGameboard] = useState([]);
   const [attackboard, setAttackboard] = useState([]);
-  const [ships, setShips] = useState([]);
+  const [allShips, setAllShips] = useState(defaultShips);
   const [isStarted, setStarted] = useState(false);
   const [winner, setWinner] = useState("");
   const [whoseTurn, setWhoseTurn] = useState("Your turn");
@@ -28,11 +32,9 @@ export default () => {
     setGameboard(player.getGameboard());
     setAttackboard(computerPlayer.getAttackboard());
     setTotalShots(0);
-    setShips(
-      player.getShips().map((ship) => ({
-        ...ship,
-      }))
-    );
+    const playerShips = player.getShips();
+    const enemyShips = computerPlayer.getShips();
+    setAllShips({ playerShips, enemyShips });
     setWhoseTurn("Your turn");
     setStarted(false);
     setWinner("");
@@ -78,12 +80,10 @@ export default () => {
 
   const shuffleShips = () => {
     if (!isStarted) {
+      const playerShips = player.getShips();
+      const enemyShips = computerPlayer.getShips();
       player.randomizeShips();
-      setShips(
-        player.getShips().map((ship) => ({
-          ...ship,
-        }))
-      );
+      setAllShips({ playerShips, enemyShips });
     }
   };
 
@@ -97,7 +97,7 @@ export default () => {
   const handleNewGame = () => {
     init();
   };
-
+  console.log(allShips);
   return (
     <MainPageUI.StyledGame>
       <MainPageUI.StyledHeader>
@@ -113,13 +113,14 @@ export default () => {
         whoseTurn={whoseTurn}
       />
       <Board>
-        <PlayerBoard board={gameboard} ships={ships} />
+        <PlayerBoard board={gameboard} ships={allShips.playerShips} />
       </Board>
       <Board>
         <EnemyBoard
           board={attackboard}
           onCellClick={handleCellClick}
           isStarted={isStarted}
+          ships={allShips.enemyShips}
         />
       </Board>
     </MainPageUI.StyledGame>

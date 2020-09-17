@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Cell } from "../";
+import { Cell, Ship } from "../";
 
 const StyledBoard = styled.div`
   display: grid;
@@ -9,7 +9,20 @@ const StyledBoard = styled.div`
   position: relative;
 `;
 
-export default ({ board, onCellClick, isStarted }) => {
+export default ({ board, onCellClick, isStarted, ships = [] }) => {
+  const renderShips = () =>
+    ships.map((ship, index) => {
+      const { coords } = ship;
+      return (
+        <Ship
+          coords={coords}
+          key={index}
+          length={ship.length}
+          orientation={ship.orientation}
+        />
+      );
+    });
+
   const renderCells = () =>
     board.map((row, rowIndex) =>
       row.map((cell, colIndex) => (
@@ -22,5 +35,10 @@ export default ({ board, onCellClick, isStarted }) => {
       ))
     );
 
-  return <StyledBoard>{renderCells()}</StyledBoard>;
+  return (
+    <StyledBoard>
+      {renderCells()}
+      {renderShips()}
+    </StyledBoard>
+  );
 };

@@ -4,7 +4,7 @@ import { Cell, Ship } from "../";
 //UI
 import * as PlayerBoardUI from "./PlayerBoardUI";
 
-export default ({ board, ships }) => {
+export default ({ board, ships = [] }) => {
   const renderCells = () =>
     board.map((row, rowIndex) =>
       row.map((cell, colIndex) => (
