@@ -5,7 +5,6 @@ export const StyledBoardContainer = styled.div`
   width: 457px;
   height: 457px;
   grid-template: 45px 1fr/ 45px 1fr;
-  margin-right: 50px;
   background-image: radial-gradient(
     circle 465px at -15.1% -25%,
     rgba(17, 130, 193, 1) 0%,

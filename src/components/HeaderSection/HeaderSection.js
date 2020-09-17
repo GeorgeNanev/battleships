@@ -10,7 +10,12 @@ export default ({
   whoseTurn,
 }) => {
   return (
-    <HeaderSectionUI.StyledButtonsWrapper>
+    <div>
+      {!isStarted && !winner && (
+        <HeaderSectionUI.StyledMessage>
+          Start the game against the computer
+        </HeaderSectionUI.StyledMessage>
+      )}
       {isStarted && (
         <HeaderSectionUI.StyledButton onClick={onNewGame}>
           New Game
@@ -21,22 +26,17 @@ export default ({
           Start game
         </HeaderSectionUI.StyledButton>
       )}
-      {!isStarted && !winner && (
-        <HeaderSectionUI.StyledMessage>
-          Place ships
-        </HeaderSectionUI.StyledMessage>
-      )}
       {isStarted && !winner && (
         <HeaderSectionUI.StyledMessage>
           {whoseTurn}
         </HeaderSectionUI.StyledMessage>
       )}
       {isStarted && winner && (
-        <HeaderSectionUI.StyledMessage>{`${winner} won the game`}</HeaderSectionUI.StyledMessage>
+        <HeaderSectionUI.StyledMessage>{`${winner}. Try again ?`}</HeaderSectionUI.StyledMessage>
       )}
       <HeaderSectionUI.StyledButton onClick={onRandom} disabled={isStarted}>
         Shuffle position
       </HeaderSectionUI.StyledButton>
-    </HeaderSectionUI.StyledButtonsWrapper>
+    </div>
   );
 };

@@ -103,26 +103,39 @@ export default () => {
       <MainPageUI.StyledHeader>
         <h1>Battleships game</h1>
       </MainPageUI.StyledHeader>
-      {/* <GameInfo totalShots={totalShots}></GameInfo> */}
-      <HeaderSection
-        winner={winner}
-        isStarted={isStarted}
-        onPlay={handlePlay}
-        onRandom={shuffleShips}
-        onNewGame={handleNewGame}
-        whoseTurn={whoseTurn}
-      />
-      <Board>
-        <PlayerBoard board={gameboard} ships={allShips.playerShips} />
-      </Board>
-      <Board>
-        <EnemyBoard
-          board={attackboard}
-          onCellClick={handleCellClick}
-          isStarted={isStarted}
-          ships={allShips.enemyShips}
-        />
-      </Board>
+      <MainPageUI.StyledBoardWrapper>
+        <MainPageUI.InfoWrapper>
+          <h5>
+            Press <b>Start game</b> to test your skills!
+          </h5>
+          <GameInfo totalShots={totalShots}></GameInfo>
+          <HeaderSection
+            winner={winner}
+            isStarted={isStarted}
+            onPlay={handlePlay}
+            onRandom={shuffleShips}
+            onNewGame={handleNewGame}
+            whoseTurn={whoseTurn}
+          />
+        </MainPageUI.InfoWrapper>
+        <div>
+          <p>Player board</p>
+          <Board>
+            <PlayerBoard board={gameboard} ships={allShips.playerShips} />
+          </Board>
+        </div>
+        <div>
+          <p>Computer board</p>
+          <Board>
+            <EnemyBoard
+              board={attackboard}
+              onCellClick={handleCellClick}
+              isStarted={isStarted}
+              ships={allShips.enemyShips}
+            />
+          </Board>
+        </div>
+      </MainPageUI.StyledBoardWrapper>
     </MainPageUI.StyledGame>
   );
 };

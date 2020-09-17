@@ -14,4 +14,5 @@ export const StyledShip = styled.div.attrs(
   border: 2px solid #403771;
   border-radius: 2px;
   background-color: rgba(0, 0, 255, 0.05);
+  pointer-events: none;
 `;
