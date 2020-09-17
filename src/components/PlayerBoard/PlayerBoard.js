@@ -1,14 +1,8 @@
 import React from "react";
-import styled from "styled-components";
-import Cell from "../Cell/Cell";
-import Ship from "../Ship/Ship";
-
-const StyledBoard = styled.div`
-  display: grid;
-  grid-template-columns: repeat(10, 32px);
-  grid-template-rows: repeat(10, 32px);
-  position: relative;
-`;
+//COMPONENTS
+import { Cell, Ship } from "../";
+//UI
+import * as PlayerBoardUI from "./PlayerBoardUI";
 
 export default ({ board, ships }) => {
   const renderCells = () =>
@@ -19,13 +13,12 @@ export default ({ board, ships }) => {
     );
 
   const renderShips = () =>
-    ships.map((ship) => {
+    ships.map((ship, index) => {
       const { coords } = ship;
       return (
         <Ship
           coords={coords}
-          id={ship.id}
-          key={ship.id}
+          key={index}
           length={ship.length}
           orientation={ship.orientation}
         />
@@ -33,9 +26,9 @@ export default ({ board, ships }) => {
     });
 
   return (
-    <StyledBoard>
+    <PlayerBoardUI.StyledBoard>
       {renderCells()}
       {renderShips()}
-    </StyledBoard>
+    </PlayerBoardUI.StyledBoard>
   );
 };

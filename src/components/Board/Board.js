@@ -1,6 +1,6 @@
 import React from "react";
 // CONSTANTS
-import { BOARD_SIZE, COL_ARRAY } from "../../constants/board";
+import { BOARD_SIZE, COL_ARRAY } from "../../constants/boardSettings";
 // UI
 import * as BoardUI from "./BoardUI";
 

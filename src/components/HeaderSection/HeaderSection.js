@@ -1,51 +1,42 @@
 import React from "react";
-import styled from "styled-components";
-
-const StyledButton = styled.button`
-  align-self: center;
-  padding: 10px 20px;
-  margin-top: 4px;
-  border: none;
-  border-radius: 5px;
-  background-color: lightgreen;
-  outline: none;
-  cursor: pointer;
-`;
-
-const StyledButtonsWrapper = styled.div`
-  display: flex;
-  grid-column: 1 / 4;
-  justify-content: space-around;
-  align-items: center;
-`;
-
-const StyledMessage = styled.h3`
-  margin-top: 10px;
-  text-align: center;
-`;
-
+//UI
+import * as HeaderSectionUI from "./HeaderSectionUI";
 export default ({
   onRandom,
   onPlay,
   onNewGame,
-  started,
+  isStarted,
   winner,
   whoseTurn,
 }) => {
   return (
-    <StyledButtonsWrapper>
-      {started && <StyledButton onClick={onNewGame}>New Game</StyledButton>}
-      {!winner && !started && (
-        <StyledButton onClick={onPlay}>Play</StyledButton>
+    <HeaderSectionUI.StyledButtonsWrapper>
+      {isStarted && (
+        <HeaderSectionUI.StyledButton onClick={onNewGame}>
+          New Game
+        </HeaderSectionUI.StyledButton>
       )}
-      {!started && !winner && <StyledMessage>Place ships</StyledMessage>}
-      {started && !winner && <StyledMessage>{whoseTurn}</StyledMessage>}
-      {started && winner && (
-        <StyledMessage>{`${winner} won the game`}</StyledMessage>
+      {!winner && !isStarted && (
+        <HeaderSectionUI.StyledButton onClick={onPlay}>
+          Play
+        </HeaderSectionUI.StyledButton>
       )}
-      <StyledButton onClick={onRandom} disabled={started}>
+      {!isStarted && !winner && (
+        <HeaderSectionUI.StyledMessage>
+          Place ships
+        </HeaderSectionUI.StyledMessage>
+      )}
+      {isStarted && !winner && (
+        <HeaderSectionUI.StyledMessage>
+          {whoseTurn}
+        </HeaderSectionUI.StyledMessage>
+      )}
+      {isStarted && winner && (
+        <HeaderSectionUI.StyledMessage>{`${winner} won the game`}</HeaderSectionUI.StyledMessage>
+      )}
+      <HeaderSectionUI.StyledButton onClick={onRandom} disabled={isStarted}>
         Random
-      </StyledButton>
-    </StyledButtonsWrapper>
+      </HeaderSectionUI.StyledButton>
+    </HeaderSectionUI.StyledButtonsWrapper>
   );
 };

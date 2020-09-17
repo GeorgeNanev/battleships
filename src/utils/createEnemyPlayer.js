@@ -1,5 +1,5 @@
 import { getRandomInt, createPlayer, isInsideBoard } from ".";
-import { BOARD_SIZE } from "../constants/board";
+import { BOARD_SIZE } from "../constants/boardSettings";
 
 export default () => {
   let hitsHistory = [];

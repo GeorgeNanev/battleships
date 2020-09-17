@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Cell from "../Cell/Cell";
+import { Cell } from "../";
 
 const StyledBoard = styled.div`
   display: grid;

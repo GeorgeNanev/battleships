@@ -1,4 +1,4 @@
-import { BOARD_SIZE } from "../constants/board";
+import { BOARD_SIZE } from "../constants/boardSettings";
 
 export default (coordinates) =>
   !!(

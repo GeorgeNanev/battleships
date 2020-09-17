@@ -1,6 +1,7 @@
 import { createShip, getRandomInt, isInsideBoard } from ".";
-import { BOARD_SIZE } from "../constants/board";
+import { BOARD_SIZE } from "../constants/boardSettings";
 
+// initialize board with empty arrays
 function initialBoard() {
   const arr = [];
   for (let i = 0; i < BOARD_SIZE; i++) {
@@ -12,7 +13,7 @@ function initialBoard() {
   return arr;
 }
 
-export default function CreateBoard() {
+export default () => {
   let board = initialBoard();
   let ships = [];
 
@@ -99,31 +100,7 @@ export default function CreateBoard() {
 
     return !hasShip;
   };
-  const canMoveShip = (ship, row, col) => {
-    // delete ship and try place at {row, col}
-    const shipCoords = ship.coords;
-    shipCoords.forEach((coords) => {
-      board[coords.row][coords.col] = "";
-    });
-    ships = ships.filter(
-      (s) =>
-        !s.coords.find(
-          (coords) =>
-            ship.coords[0].row === coords.row &&
-            ship.coords[0].col === coords.col
-        )
-    );
-    const newShip = createShip(row, col, ship.length, ship.orientation);
-    if (canPlaceShip(newShip)) {
-      return true;
-    }
 
-    shipCoords.forEach((coords) => {
-      board[coords.row][coords.col] = "S";
-    });
-    ships.push(ship);
-    return false;
-  };
   const placeShip = (ship) => {
     if (canPlaceShip(ship)) {
       ship.coords.forEach((coords) => {
@@ -136,10 +113,8 @@ export default function CreateBoard() {
   };
   const placeShips = () => {
     const shipsToPlace = {
-      s4: { quantity: 1, length: 4 },
-      s3: { quantity: 2, length: 3 },
-      s2: { quantity: 3, length: 2 },
-      s1: { quantity: 4, length: 1 },
+      battleship: { quantity: 1, length: 5 },
+      destroyer: { quantity: 2, length: 4 },
     };
 
     Object.entries(shipsToPlace).forEach(([name, ship]) => {
@@ -191,9 +166,8 @@ export default function CreateBoard() {
     getGameboard,
     getAttackboard,
     placeShip,
-    canMoveShip,
     placeShips,
     receiveAttack,
     randomizeShips,
   };
-}
+};

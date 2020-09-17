@@ -18,8 +18,6 @@ export default (row, col, length = 1, orientation = true) => {
     return coords;
   };
 
-  // orientation true = horizontal, false = vertical
-  // const id = `PS${row}${col}`;
   let hits = 0;
   const coords = createCoords(row, col, length, orientation);
   const hit = () => hits++;
