@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 //UTILS
 import { createPlayer, createEnemyPlayer } from "../../utils";
 //COMPONENTS
-import { Board, EnemyBoard, PlayerBoard, HeaderSection } from "../";
+import { Board, EnemyBoard, PlayerBoard, HeaderSection, GameInfo } from "../";
 //UI
 import * as MainPageUI from "./MainPageUI";
 
@@ -16,7 +16,9 @@ export default () => {
   const [isStarted, setStarted] = useState(false);
   const [winner, setWinner] = useState("");
   const [whoseTurn, setWhoseTurn] = useState("Your turn");
+  let [totalShots, setTotalShots] = useState(0);
 
+  // initialize the game => create Player 1 and Player AI, randomize ships position, clear winner
   const init = () => {
     player = createPlayer();
     player.placeShips();
@@ -43,7 +45,7 @@ export default () => {
       const attackResult = computerPlayer.attack(player);
       setGameboard([...player.getGameboard()]);
       if (player.hasLost()) {
-        setWinner("Computer has won! Try again.");
+        setWinner("Computer ");
         return;
       }
       if (attackResult) {
@@ -57,6 +59,7 @@ export default () => {
   const playerTurn = (row, col) => {
     const attackResult = player.attack(computerPlayer, row, col);
     setAttackboard(computerPlayer.getAttackboard());
+    setTotalShots(totalShots + 1);
     if (computerPlayer.hasLost()) {
       setWinner("You have won the game! Good job.");
       return;
@@ -72,7 +75,7 @@ export default () => {
     setStarted(true);
   };
 
-  const handleRandom = () => {
+  const shuffleShips = () => {
     if (!isStarted) {
       player.randomizeShips();
       setShips(
@@ -99,11 +102,12 @@ export default () => {
       <MainPageUI.StyledHeader>
         <h1>Battleships game</h1>
       </MainPageUI.StyledHeader>
+      <GameInfo totalShots={totalShots}></GameInfo>
       <HeaderSection
         winner={winner}
         isStarted={isStarted}
         onPlay={handlePlay}
-        onRandom={handleRandom}
+        onRandom={shuffleShips}
         onNewGame={handleNewGame}
         whoseTurn={whoseTurn}
       />
@@ -111,7 +115,11 @@ export default () => {
         <PlayerBoard board={gameboard} ships={ships} />
       </Board>
       <Board>
-        <EnemyBoard board={attackboard} onCellClick={handleCellClick} />
+        <EnemyBoard
+          board={attackboard}
+          onCellClick={handleCellClick}
+          isStarted={isStarted}
+        />
       </Board>
     </MainPageUI.StyledGame>
   );

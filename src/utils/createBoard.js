@@ -62,6 +62,7 @@ export default () => {
       coordsArr.push({ row, col: col + length });
       coordsArr.push({ row: row + 1, col: col + length });
     }
+    // return only inside board ships
     return coordsArr.filter(isInsideBoard);
   };
   const markArea = (ship) => {

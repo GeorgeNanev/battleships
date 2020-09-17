@@ -2,10 +2,18 @@ import styled from "styled-components";
 
 export const StyledBoardContainer = styled.div`
   display: grid;
-  width: 342px;
-  height: 342px;
-  grid-template: 32px 1fr/ 32px 1fr;
-  margin-right: 20px;
+  width: 457px;
+  height: 457px;
+  grid-template: 45px 1fr/ 45px 1fr;
+  margin-right: 50px;
+  background-image: radial-gradient(
+    circle 465px at -15.1% -25%,
+    rgba(17, 130, 193, 1) 0%,
+    rgba(67, 166, 238, 1) 49%,
+    rgba(126, 203, 244, 1) 90.2%
+  );
+  border: 1px solid #2cc7f1;
+  border-radius: 4px;
 `;
 
 export const StyledNumbersCaption = styled.div`

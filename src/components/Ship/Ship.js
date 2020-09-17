@@ -4,6 +4,7 @@ import React from "react";
 import * as ShipUI from "./ShipUI";
 
 export default ({ length, orientation, coords }) => {
+  console.log(orientation);
   const { row, col } = coords[0];
   return (
     <ShipUI.StyledShip

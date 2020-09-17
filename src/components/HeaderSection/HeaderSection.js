@@ -18,7 +18,7 @@ export default ({
       )}
       {!winner && !isStarted && (
         <HeaderSectionUI.StyledButton onClick={onPlay}>
-          Play
+          Start game
         </HeaderSectionUI.StyledButton>
       )}
       {!isStarted && !winner && (
@@ -35,7 +35,7 @@ export default ({
         <HeaderSectionUI.StyledMessage>{`${winner} won the game`}</HeaderSectionUI.StyledMessage>
       )}
       <HeaderSectionUI.StyledButton onClick={onRandom} disabled={isStarted}>
-        Random
+        Shuffle position
       </HeaderSectionUI.StyledButton>
     </HeaderSectionUI.StyledButtonsWrapper>
   );
