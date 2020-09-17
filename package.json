@@ -13,6 +13,7 @@
     "styled-components": "^5.2.0"
   },
   "homepage": "https://georgenanev.github.io/battleships/",
+  "deploy": "yarn run build&&gh-pages -d build",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
