@@ -1,4 +1,4 @@
-DEMO - https://georgenanev.github.io/battleships/
+DEMO - https://battleships.vercel.app/
 
 Installation instructions
 
